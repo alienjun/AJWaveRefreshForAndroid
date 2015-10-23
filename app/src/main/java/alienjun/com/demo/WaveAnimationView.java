@@ -171,9 +171,13 @@ public class WaveAnimationView extends View {
     }
 
     private void start(){
-        waveTask = new MyTimerTask(updateHandler);
-        timer = new Timer();
-        timer.schedule(waveTask, 0, 10);
+        if (waveTask == null) {
+            waveTask = new MyTimerTask(updateHandler);
+        }
+        if (timer == null) {
+            timer = new Timer();
+            timer.schedule(waveTask, 0, 10);
+        }
     }
     private  void stop(){
         if (timer != null)
